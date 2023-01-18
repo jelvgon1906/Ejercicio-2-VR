@@ -121,6 +121,12 @@ public class OVRGrabbable : MonoBehaviour
         m_grabbedBy = hand;
         m_grabbedCollider = grabPoint;
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
+
+        /*if (GetComponent<SpecificPosition>() != null)
+        {
+            transform.position = hand.gameObject.transform.position;
+            transform.rotation = hand.gameObject.transform.rotation;
+        }*/
     }
 
 	/// <summary>
