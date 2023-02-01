@@ -122,6 +122,17 @@ public class OVRGrabbable : MonoBehaviour
         m_grabbedCollider = grabPoint;
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
 
+        // Added for inventory *********
+        if (gameObject.GetComponent<Items>() == null) return;
+        if (gameObject.GetComponent<Items>().inSlot)
+        {
+            gameObject.GetComponentInParent<Slot>().ItemInSlot = null;
+            gameObject.transform.parent = null;
+            gameObject.GetComponent<Items>().inSlot = false;
+            gameObject.GetComponent<Items>().currentSlot.ResetColor();
+            gameObject.GetComponent<Items>().currentSlot = null;
+
+        }
         /*if (GetComponent<SpecificPosition>() != null)
         {
             transform.position = hand.gameObject.transform.position;
